@@ -15,5 +15,9 @@ async function getById(id) {
     console.log(error);
   }
 }
+async function add(data) {
+  return await apiInstance.post('/products/add', data);
+}
 
-export const productsApi = { getAll, getById };
+export const productsApi = { getAll, getById, add };
+
