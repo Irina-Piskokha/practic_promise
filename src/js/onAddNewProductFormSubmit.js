@@ -1,7 +1,6 @@
 import { productsApi } from '../requests/products';
 import { createSingleProductMarkup } from '../services/markupService';
-
-const newProductSectionRef = document.querySelector('#newProductSection');
+import { refs } from './refs';
 
 export async function onAddNewProductFormSubmit(event) {
   event.preventDefault();
@@ -11,6 +10,5 @@ export async function onAddNewProductFormSubmit(event) {
   );
   const result = await productsApi.add(data);
   const markup = createSingleProductMarkup(result.data);
-  newProductSectionRef.innerHTML = markup;
+  refs.newProductSectionRef.innerHTML = markup;
 }
-

@@ -1,29 +1,13 @@
 import './styles/normalize.css';
 import './styles/index.css';
 import apiInstance from './services/api';
-import {
-  createProductsMarkup,
-  createSingleProductMarkup,
-} from './services/markupService';
 import { productsApi } from './requests/products';
+import { renderAllProducts } from './js/renderAllProducts';
 import { onSingleProductFormSubmit } from './js/onSingleProductFormSubmit';
 import { onAddNewProductFormSubmit } from './js/onAddNewProductFormSubmit';
+import { refs } from './js/refs';
 
-const formRef = document.querySelector('#singleProductForm');
-const ulContainer = document.querySelector('#allProducts');
+renderAllProducts();
 
-async function renderAllProducts() {
-  try {
-    const result = await productsApi.getAll();
-    ulContainer.innerHTML = createProductsMarkup(result.data.products);
-  } catch (error) {
-    console.log(error);
-  }
-}
-
-// renderAllProducts();
-
-formRef.addEventListener('submit', onSingleProductFormSubmit);
-const newProductSectionRef = document.querySelector('#newProductSection');
-const addNewProductFormRef = document.querySelector('#addNewProductForm');
-addNewProductFormRef.addEventListener('submit', onAddNewProductFormSubmit);
+refs.formRef.addEventListener('submit', onSingleProductFormSubmit);
+refs.addNewProductFormRef.addEventListener('submit', onAddNewProductFormSubmit);
