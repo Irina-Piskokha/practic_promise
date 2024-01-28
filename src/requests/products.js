@@ -8,4 +8,12 @@ async function getAll() {
   }
 }
 
-export const contactsApi = { getAll };
+async function getById(id) {
+  try {
+    return await apiInstance.get(`/products/${id}`);
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+export const productsApi = { getAll, getById };
