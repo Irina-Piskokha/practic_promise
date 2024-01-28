@@ -8,4 +8,10 @@ const createProductsMarkup = arr => {
     .join('');
 };
 
-export { createProductsMarkup };
+function createSingleProductMarkup({ title, description, price }) {
+  return `<h3>${title}</h3>
+      <p>${description}</p>
+      <p>${price}</p>`;
+}
+
+export { createProductsMarkup, createSingleProductMarkup };
