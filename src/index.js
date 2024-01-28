@@ -1,9 +1,13 @@
 import './styles/normalize.css';
 import './styles/index.css';
 import apiInstance from './services/api';
-import { createProductsMarkup } from './services/markupService';
+import {
+  createProductsMarkup,
+  createSingleProductMarkup,
+} from './services/markupService';
 import { productsApi } from './requests/products';
 import { onSingleProductFormSubmit } from './js/onSingleProductFormSubmit';
+import { onAddNewProductFormSubmit } from './js/onAddNewProductFormSubmit';
 
 const formRef = document.querySelector('#singleProductForm');
 const ulContainer = document.querySelector('#allProducts');
@@ -20,3 +24,6 @@ async function renderAllProducts() {
 // renderAllProducts();
 
 formRef.addEventListener('submit', onSingleProductFormSubmit);
+const newProductSectionRef = document.querySelector('#newProductSection');
+const addNewProductFormRef = document.querySelector('#addNewProductForm');
+addNewProductFormRef.addEventListener('submit', onAddNewProductFormSubmit);
